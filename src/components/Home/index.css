@@ -1,0 +1,67 @@
+.home-container {
+  height: 100vh;
+  width: 100vw;
+}
+
+.main {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.main-1 {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.search-1 {
+  margin-top: 10px;
+}
+
+.failure-pic {
+  height: 400px;
+  width: 500px;
+}
+
+.job-heading-1 {
+  font-size: 40px;
+  color: white;
+  font-weight: 800;
+}
+
+.job-subheading {
+  font-size: 20px;
+  color: white;
+  font-weight: 400;
+}
+
+.bon {
+  height: 32px;
+  width: 90px;
+  background-color: #4f46e5;
+  color: white;
+}
+
+.employment {
+  display: flex;
+  flex-direction: column;
+}
+
+.employment-1 {
+  display: flex;
+  flex-direction: column;
+}
+
+.jobs-main {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.search-icon {
+  height: 30px;
+  width: 250px;
+  margin-top: 10px;
+  margin-left: 42px;
+}
