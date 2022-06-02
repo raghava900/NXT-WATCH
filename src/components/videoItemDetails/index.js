@@ -6,7 +6,7 @@ import {AiFillHome, AiFillFire} from 'react-icons/ai'
 import {SiYoutubegaming} from 'react-icons/si'
 import {CgPlayListAdd} from 'react-icons/cg'
 import Header from '../Header'
-import GamingProps from '../gamingprops'
+import VideoItem from '../videoItem'
 import './index.css'
 
 const apiStatusConstants = {
@@ -16,36 +16,36 @@ const apiStatusConstants = {
   inProgress: 'IN_PROGRESS',
 }
 
-class Trending extends Component {
+class VideoItemDetails extends Component {
   state = {
     apiStatus: apiStatusConstants.initial[0],
-    gamingVideo: [],
+    videoItemDetails: [],
   }
 
   componentDidMount() {
-    this.getTrendingVideos()
+    this.getVideoDetails()
   }
 
-  getTrendingVideos = async () => {
+  getVideoDetails = async () => {
+    const {match} = this.props
+    const {params} = match
+    const {id} = params
+
     this.setState({apiStatus: apiStatusConstants.inProgress})
     const jwtToken = Cookies.get('jwt_token')
-    const gamingVideosApiUrl = 'https://apis.ccbp.in/videos/gaming'
+    const videoItemDetailsApiUrl = `https://apis.ccbp.in/videos/${id}`
     const options = {
       headers: {
         Authorization: `Bearer ${jwtToken}`,
       },
       method: 'GET',
     }
-    const response = await fetch(gamingVideosApiUrl, options)
+    const response = await fetch(videoItemDetailsApiUrl, options)
     if (response.ok === true) {
       const data = await response.json()
-      const updatedData = data.videos.map(each => ({
-        title: each.title,
-        thumbnailUrl: each.thumbnail_url,
-        viewCount: each.view_count,
-      }))
+      const updatedData = data
       this.setState({
-        gamingVideo: updatedData,
+        videoItemDetails: updatedData,
         apiStatus: apiStatusConstants.success,
       })
     } else {
@@ -61,11 +61,13 @@ class Trending extends Component {
         className="failure-pic"
       />
       <h1 className="job-heading-1">Oops! Something Went Wrong</h1>
-      <p className="job-subheading">We are having some trouble</p>
+      <p className="job-subheading">
+        We are having some trouble to complete your request. Please try again.
+      </p>
       <button
         type="button"
         className="bon"
-        onClick={() => this.getTrendingVideos()}
+        onClick={() => this.getVideoDetails()}
       >
         Retry
       </button>
@@ -73,22 +75,14 @@ class Trending extends Component {
   )
 
   renderLoader = () => (
-    <div className="job-container" testId="loader">
+    <div className="job-container" testid="loader">
       <Loader type="ThreeDots" color="black" height="50" width="50" />
     </div>
   )
 
   renderVideosList = () => {
-    const {gamingVideo} = this.state
-    return (
-      <div>
-        <ul>
-          {gamingVideo.map(item => (
-            <GamingProps key={item.id} games={item} />
-          ))}
-        </ul>
-      </div>
-    )
+    const {videoItemDetails} = this.state
+    return <VideoItem video={videoItemDetails} />
   }
 
   renderProductDetails = () => {
@@ -109,7 +103,7 @@ class Trending extends Component {
   render() {
     return (
       <Link to="/trending">
-        <div className="game-container">
+        <div className="home-container">
           <Header />
           <div className="jobs-main">
             <div className="employment">
@@ -148,7 +142,6 @@ class Trending extends Component {
                 </p>
               </div>
             </div>
-            <h1>Gaming</h1>
 
             <ul>{this.renderProductDetails()}</ul>
           </div>
@@ -158,4 +151,4 @@ class Trending extends Component {
   }
 }
 
-export default Trending
+export default VideoItemDetails

@@ -1,6 +1,13 @@
-.home-container {
+.container {
   height: 100vh;
   width: 100vw;
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+}
+
+.link {
+  text-decoration: none;
 }
 
 .main {
@@ -10,8 +17,6 @@
 }
 
 .main-1 {
-  display: flex;
-  flex-direction: column;
   margin-top: 20px;
 }
 
@@ -24,15 +29,14 @@
   width: 500px;
 }
 
-.job-heading-1 {
-  font-size: 40px;
-  color: white;
-  font-weight: 800;
+.home-heading {
+  font-size: 14px;
+  color: #00306e;
 }
 
-.job-subheading {
+.home-subheading {
   font-size: 20px;
-  color: white;
+  color: #00306e;
   font-weight: 400;
 }
 
@@ -43,20 +47,28 @@
   color: white;
 }
 
-.employment {
+.list {
+  list-style-type: none;
   display: flex;
   flex-direction: column;
 }
 
-.employment-1 {
+.employment {
+  height: 100vh;
+  width: 20vw;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+}
+
+.banner-1 {
+  height: 100vh;
+  width: 60vw;
 }
 
 .jobs-main {
   display: flex;
   flex-direction: row;
-  justify-content: center;
 }
 
 .search-icon {
@@ -64,4 +76,23 @@
   width: 250px;
   margin-top: 10px;
   margin-left: 42px;
+}
+
+.banner {
+  height: 200px;
+  width: 100vw;
+  background-image: url('https://assets.ccbp.in/frontend/react-js/nxt-watch-banner-bg.png');
+  background-size: cover;
+}
+
+.home-icon {
+  height: 30px;
+  width: 30px;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  text-decoration: none;
 }
