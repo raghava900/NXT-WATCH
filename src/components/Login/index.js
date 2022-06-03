@@ -7,7 +7,18 @@ import Cookies from 'js-cookie'
 import './index.css'
 
 class Login extends Component {
-  state = {username: '', password: '', showErrorMsg: false, errorMsg: ''}
+  state = {
+    username: '',
+    password: '',
+    showErrorMsg: false,
+    errorMsg: '',
+    isPasswordShown: false,
+  }
+
+  onTogglePassWordVisibility = () => {
+    const {isPasswordShown} = this.state
+    this.setState({isPasswordShown: !isPasswordShown})
+  }
 
   onChangeUsername = event => {
     this.setState({username: event.target.value})
@@ -46,7 +57,13 @@ class Login extends Component {
   }
 
   render() {
-    const {username, password, showErrorMsg, errorMsg} = this.state
+    const {
+      username,
+      password,
+      showErrorMsg,
+      errorMsg,
+      isPasswordShown,
+    } = this.state
     const jwt = Cookies.get('jwt_token')
     if (jwt !== undefined) {
       return <Redirect to="/" />
@@ -78,12 +95,20 @@ class Login extends Component {
             </label>
             <input
               id="password"
-              type="password"
+              type={isPasswordShown ? 'text' : 'password'}
               value={password}
               placeholder="Password"
               className="input"
               onChange={this.onChangePassword}
             />
+            <input
+              type="checkbox"
+              id="show password"
+              onClick={this.onTogglePassWordVisibility}
+            />
+            <label className="text" htmlFor="show password">
+              Show password
+            </label>
             <button type="submit" className="btn">
               Login
             </button>

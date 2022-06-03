@@ -107,19 +107,28 @@ class VideoItemDetails extends Component {
           <Header />
           <div className="jobs-main">
             <div className="employment">
-              <p>
-                <AiFillHome />
-                Home
-              </p>
-              <p>
-                <AiFillFire /> Trending
-              </p>
-              <p>
-                <SiYoutubegaming /> Gaming
-              </p>
-              <p>
-                <CgPlayListAdd /> Saved videos
-              </p>
+              <Link to="/">
+                <p>
+                  <AiFillHome />
+                  Home
+                </p>
+              </Link>
+              <Link to="/trending">
+                <p>
+                  <AiFillFire /> Trending
+                </p>
+              </Link>
+              <Link to="/gaming">
+                <p>
+                  <SiYoutubegaming /> Gaming
+                </p>
+              </Link>
+              <Link to="/saved-videos">
+                <p>
+                  <CgPlayListAdd /> Saved videos
+                </p>
+              </Link>
+
               <div>
                 <img
                   src="https://assets.ccbp.in/frontend/react-js/nxt-watch-facebook-logo-img.png"

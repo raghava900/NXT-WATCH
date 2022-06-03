@@ -4,11 +4,12 @@ import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
 import {AiFillHome, AiFillFire} from 'react-icons/ai'
 import {SiYoutubegaming} from 'react-icons/si'
+import {FiSearch} from 'react-icons/fi'
 import {CgPlayListAdd} from 'react-icons/cg'
-// import Header from '../Header'
+import Header from '../Header'
 import VideoProps from '../videoProps'
 import './index.css'
-import ThemeContext from '../context/ThemeContext'
+// import ThemeContext from '../context/ThemeContext'
 
 const apiStatusConstants = {
   initial: 'INITIAL',
@@ -80,8 +81,8 @@ class Home extends Component {
   )
 
   renderLoader = () => (
-    <div className="job-container" testid="loader">
-      <Loader type="ThreeDots" color="#ffffff" height="50" width="50" />
+    <div className="container" testid="loader">
+      <Loader type="ThreeDots" color="black" height="50" width="50" />
     </div>
   )
 
@@ -144,7 +145,7 @@ class Home extends Component {
               <div>Selected theme is {theme.isDarkTheme ? 'hi' : 'hello'}</div>
             )}
           </ThemeContext.Consumer> */}
-          {/* <Header /> */}
+          <Header />
           <div className="jobs-main">
             <div className="employment">
               <ul className="list">
@@ -203,12 +204,21 @@ class Home extends Component {
                 <p>Buy Nxt Watch Premium</p>
                 <button type="button">GET IT NOW</button>
               </div>
+              <div>
+                <input
+                  type="search"
+                  placeholder="Search"
+                  onChange={this.onChangeInput}
+                />
+                <button
+                  type="button"
+                  testid="searchButton"
+                  onClick={() => this.getVideos()}
+                >
+                  <FiSearch />
+                </button>
+              </div>
 
-              <input
-                type="search"
-                placeholder="Search"
-                onChange={this.onChangeInput}
-              />
               <ul>
                 <ul>{this.renderProductDetails()}</ul>
               </ul>

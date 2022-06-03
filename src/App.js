@@ -9,7 +9,6 @@ import VideoItemDetails from './components/videoItemDetails'
 import notFound from './components/notFound'
 import SavedVideos from './components/saved-videos'
 import ThemeContext from './components/context/ThemeContext'
-import Header from './components/Header'
 
 import './App.css'
 
@@ -32,7 +31,6 @@ class App extends Component {
           toggleTheme: this.toggleTheme,
         }}
       >
-        <Header />
         <Switch>
           <Route exact path="/login" component={Login} />
           <ProtectedRoute exact path="/" component={Home} />
